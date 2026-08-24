@@ -1,0 +1,38 @@
+name: Atualizar avaliações do Google
+
+on:
+  schedule:
+    # todo dia às 9h de Brasília (12h UTC)
+    - cron: "0 12 * * *"
+  workflow_dispatch: # permite rodar na mão pelo botão "Run workflow"
+
+permissions:
+  contents: write
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Buscar no Google
+        env:
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+          PLACE_ID: ${{ secrets.PLACE_ID }}
+        run: node scripts/atualiza-avaliacoes.mjs
+
+      - name: Publicar se algo mudou
+        run: |
+          if [ -n "$(git status --porcelain avaliacoes.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add avaliacoes.json
+            git commit -m "Atualiza avaliações do Google"
+            git push
+          else
+            echo "Sem mudanças."
+          fi

@@ -85,6 +85,56 @@
     }, {passive:true});
   }
 
+
+  // avaliações do Google, gravadas em avaliacoes.json pela rotina diária
+  function estrelas(n) { var c = Math.round(n || 0); return "★★★★★".slice(0, c) + "☆☆☆☆☆".slice(0, 5 - c); }
+
+  function pintarAvaliacoes(dados) {
+    if (!dados) return;
+    var nota = document.getElementById("ratingNota");
+    var total = document.getElementById("ratingTotal");
+    var estr = document.getElementById("ratingEstrelas");
+    if (nota && dados.nota) nota.textContent = String(dados.nota).replace(".", ",");
+    if (estr && dados.nota) estr.textContent = estrelas(dados.nota);
+    if (total && dados.total) total.textContent = dados.total + " avaliações no Google";
+    if (dados.linkGoogle) ["ratingLink", "verNoGoogle"].forEach(function (id) {
+      var a = document.getElementById(id); if (a) a.href = dados.linkGoogle;
+    });
+    var lista = document.getElementById("listaAvaliacoes");
+    if (!lista) return;
+    var itens = dados.avaliacoes || [];
+    if (!itens.length) {
+      lista.innerHTML = '<div class="reviews-vazio">As avaliações escolhidas entram aqui.</div>';
+      return;
+    }
+    lista.innerHTML = "";
+    lista.classList.toggle("quatro", itens.length === 4);
+    itens.forEach(function (a) {
+      var card = document.createElement(a.link ? "a" : "article");
+      card.className = "review" + (a.link ? " comlink" : "");
+      if (a.link) { card.href = a.link; card.target = "_blank"; card.rel = "noopener"; card.style.textDecoration = "none"; card.style.color = "inherit"; }
+      var inicial = (a.nome || "?").trim().charAt(0).toUpperCase();
+      var foto = a.foto
+        ? '<img class="foto" src="' + a.foto + '" alt="" loading="lazy" referrerpolicy="no-referrer">'
+        : '<span class="foto av" style="display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--green)">' + inicial + '</span>';
+      card.innerHTML = '<div class="topo">' + foto + '<span class="quem"><b></b><span></span></span></div>' +
+        '<div class="stars">' + estrelas(a.nota) + '</div><p class="texto"></p>' +
+        (a.link ? '<span class="verno">Ver no Google <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span>' : '');
+      card.querySelector(".quem b").textContent = a.nome || "Cliente";
+      card.querySelector(".quem span").textContent = a.quando || "";
+      var p = card.querySelector(".texto");
+      p.textContent = a.texto || "";
+      lista.appendChild(card);
+    });
+  }
+
+  if (document.getElementById("listaAvaliacoes")) {
+    fetch("avaliacoes.json", { cache: "no-cache" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(pintarAvaliacoes)
+      .catch(function () {});
+  }
+
   // modo revisão: só liga com ?revisao=1 no endereço, para o cliente não ver os avisos
   var ligado = location.search.indexOf("revisao=1") > -1;
   try { if (!ligado && localStorage.getItem("tf-review") === "1" && location.search) ligado = true; } catch (e) {}

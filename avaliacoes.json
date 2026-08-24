@@ -1,0 +1,36 @@
+{
+  "_comentario": "Avaliacoes reais escolhidas do perfil do Google, transcritas exatamente como publicadas. O link leva a pessoa para a avaliacao original.",
+  "nota": 4.6,
+  "total": 28,
+  "linkGoogle": "https://www.google.com/maps/search/?api=1&query=Tratofino+Pet+Shop+e+Creche+Curitiba",
+  "avaliacoes": [
+    {
+      "nome": "Letícia Bartholomeu de Queiroz Lima",
+      "quando": "há um mês",
+      "nota": 5,
+      "texto": "Excelente creche e pet shop! Nosso chico salsicha vai 5x na semana e toma banho toda semana. O carinho e amor que tem por ele e pelos demais é nítido! Chico chega na creche todo dia feliz e sempre vai dar oi para todos que o recebem com muito amor e carinho. Também já usamos o serviço de hotelzinho e cuidaram super bem dele! Só temos a agradecer. Eles tem toda nossa confiança.",
+      "link": "https://maps.app.goo.gl/YhE5Lh5hmjBRrB9b8"
+    },
+    {
+      "nome": "Juliana Grabowski",
+      "quando": "há um ano",
+      "nota": 5,
+      "texto": "Somos muito felizes em ter conhecido a trato fino! Nossa salsichinha Luna fica na creche com eles 3x por semana e eles são muito atenciosos, tratam com dedicação e amor aos doguinhos. A Luna ama ir para a creche, ama a equipe e os amiguinhos dela. Também já usamos o serviço de banho e a Luna voltou muuuiiito cheirosa pra casa e com os pelos ainda mais lindos! Obrigada por tudo Tulla, Gabriel e equipe!",
+      "link": "https://maps.app.goo.gl/7Xu6qJk3WAMtkvp49"
+    },
+    {
+      "nome": "Débora Macedo",
+      "quando": "há um ano",
+      "nota": 5,
+      "texto": "Gostei muito do serviço de banho e tosa, o bentinho volta ainda mais lindo, clarinho, macio e cheiroso, e parece que se mantém assim por mais tempo, então consigo levá-lo a cada 15 dias e não toda semana. A tosa é impecável!!! E acho que ele é bem tratado lá (assim espero) recomendo!!",
+      "link": "https://maps.app.goo.gl/dsgbTRDvKG2EJfhW7"
+    },
+    {
+      "nome": "Kelly Marques",
+      "quando": "há um ano",
+      "nota": 5,
+      "texto": "Quero elogiar esta instituição que cuida tão bem dos meus filhos de 4 patas...que não são nada fácil kkkkk. Mas o proprietário são muito atenciosos e sempre vão avisando agente do comportamento deles. Prestativos e carinhosos super indico. Obrigada pela atenção prestada a eles.",
+      "link": "https://maps.app.goo.gl/3shCD8Sh4wC1EkJ48"
+    }
+  ]
+}
