@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tratofino.vercel.app/sitemap.xml
